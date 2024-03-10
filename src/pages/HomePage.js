@@ -35,8 +35,8 @@ const HomePage = () => {
 
     return (
         <Wrapper>
-            <h1>Welcome to our Online Store</h1>
-            <p>Explore our latest products below:</p>
+            <h1 className="text-3xl font-bold mb-4">Welcome to our Online Store</h1>
+            <p className="text-lg mb-4">Explore our latest products below:</p>
             <ProductList products = {products} />
 
             <ReactPaginate
@@ -44,7 +44,7 @@ const HomePage = () => {
                 pageRangeDisplayed={5}
                 marginPagesDisplayed={2}
                 onPageChange={handlePageClick}
-                containerClassName="pagination"
+                containerClassName="pagination flex justify-center mt-4"
                 activeClassName="active"
                 previousLabel={'<'}
                 nextLabel={'>'}

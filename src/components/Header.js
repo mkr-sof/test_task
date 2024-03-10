@@ -4,7 +4,7 @@ import {Wrapper} from "./index";
 function Header(props) {
     return (
         <Wrapper>
-            <h1>ValantisJewelry</h1>
+            <h1 className="text-3xl font-bold">ValantisJewelry</h1>
         </Wrapper>
     );
 }

@@ -129,7 +129,7 @@ async function makeRequest(endpoint, action, params) {
         }
         const responseData = await response.json();
         const result = responseData.result;
-        console.log(result)
+        // console.log(result)// here ok I take data
         return result;
 
     } catch (error) {

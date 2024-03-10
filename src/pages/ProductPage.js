@@ -11,7 +11,10 @@ useEffect(() => {
     const fetchProductById = async () => {
         try{
             const response = await Api.getIds(0, 50);
-            setProduct(response.data);
+            const uniqueProducts = response.data.filter((product, index, self) =>
+                index === self.findIndex(p => p.id === product.id)
+            );
+            setProduct(uniqueProducts);
         }catch(error){
             console.error(error)
         }
@@ -21,15 +24,15 @@ useEffect(() => {
 }, [productId])
 
        if (!sortedProduct) {
-        return <div>Product not found</div>;
+        return <div className="text-center mt-8">Product not found</div>;
     }
-
     return (
-        <div>
-            <h1>Product Details</h1>
-            <h2>{sortedProduct.product}</h2>
-            <p>{sortedProduct.brand}</p>
-            <p>Price: ${sortedProduct.price}</p>
+
+        <div className="max-w-4xl mx-auto mt-8 p-4 bg-white shadow-md rounded-md">
+            <h1 className="text-2xl font-bold mb-4">Product Details</h1>
+            <h2 className="text-xl font-semibold mb-2">{sortedProduct.product}</h2>
+            <p className="text-lg mb-2">{sortedProduct.brand}</p>
+            <p className="text-lg font-bold">Price: ${sortedProduct.price}</p>
         </div>
     );
 };

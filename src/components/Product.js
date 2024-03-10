@@ -4,8 +4,8 @@ import Api from "../Api";
 
 
 
-const Product = ({id, product, brand, price }) => {
-    const [productDetails, setProductDetails] = useState([]);
+const Product = () => {
+    const [productDetails, setProductDetails] = useState(null);
 
 
     useEffect(() => {
@@ -14,45 +14,41 @@ const Product = ({id, product, brand, price }) => {
             try {
                 // const productDetailsData = await Api.getItems([product.id]);
                 const productIds = await Api.getIds(0, 50);
-                console.log(productIds)
+                console.log(productIds)  //it ok logged ids
                 const productDetailsData = await Api.getItems(productIds);
                 setProductDetails(productDetailsData);
-                console.log(product)
             } catch (error) {
                 console.error('Error fetching products:', error);
                 throw error;
             }
         };
 
+        fetchProductDetails();
+    }, []);
 
+    console.log(productDetails);   //here ok too I see data in console
 
-
-        fetchProductDetails().then(details => {
-            setProductDetails(details);
-        }).catch(error => {
-            console.error('Error fetching products:', error);
-        });
-    }, [productDetails]);
 
     return (
-<div>
+<div  className="bg-gray-100 p-8 rounded-md shadow-md">
     {productDetails? (
         <>
-            <h2>{brand}</h2>
-            <p>{product}</p>
-            <p>${price}</p>
+            <h2 className="text-xl font-bold mb-2">{productDetails.brand ? productDetails.brand : "Unknown Brand"}</h2>
+            <p className="text-lg mb-2">{productDetails.product}</p>
+            <p className="text-green-700 font-bold">${productDetails.price}</p>
         </>
     ): (
-        <p>Loading...</p>
+        <p className="text-center">Loading...</p>
     )}
 </div>
     );
 };
 
 Product.propTypes = {
-    product: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
+    productDetails: PropTypes.shape({
+        brand: PropTypes.string,
+        id: PropTypes.string.isRequired,
+        product: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired
     })
 };
