@@ -10,15 +10,16 @@ import './App.css';
 const App = () => {
   return (
       <Router>
-
-          <Routes>
-              {/*<Route path="/" element={<HomePage />}/>*/}
-              {/*<Route path="products/:id" element=<ProductPage match /> />*/}
-              <Route path="/" element={<Product />}/>
-              <Route path="/products" element=<ProductList products />/>
-              {/*<Route element=<NotFoundPage />/>*/}
-          </Routes>
-
+          {/*<Header/>*/}
+          {/*<NavBar/>*/}
+              <Routes>
+                  {/*<Route path="/" element={<HomePage />}/>*/}
+                  {/*<Route path="/products/:id" element=<ProductPage match /> />*/}
+                  <Route path="/" element={<Product/>}/>
+                  {/*<Route path="/products" element=<ProductList products />/>*/}
+                  {/*<Route element=<NotFoundPage />/>*/}
+              </Routes>
+          {/*<Footer/>*/}
       </Router>
   );
 };

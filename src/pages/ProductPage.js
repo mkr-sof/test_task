@@ -11,6 +11,7 @@ useEffect(() => {
     const fetchProductById = async () => {
         try{
             const response = await Api.getIds(0, 50);
+
             const uniqueProducts = response.data.filter((product, index, self) =>
                 index === self.findIndex(p => p.id === product.id)
             );
