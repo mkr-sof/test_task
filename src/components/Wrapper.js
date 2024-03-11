@@ -4,10 +4,10 @@ import {Header, NavBar} from "./index";
 
 function Wrapper(props) {
     return (
-        <div id="wrapper">
+        <div id="wrapper"  className="min-h-screen flex flex-col p-4">
             <Header/>
             <NavBar/>
-            {props.children}
+            <main className="flex-grow">{props.children}</main>
             <Footer/>
         </div>
     );

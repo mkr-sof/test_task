@@ -38,7 +38,10 @@ const Product = () => {
             <p className="text-green-700 font-bold">${productDetails.price}</p>
         </>
     ): (
-        <p className="text-center">Loading...</p>
+        <div className="flex justify-center items-center h-40">
+            <p className="text-center">Loading...</p>
+        </div>
+
     )}
 </div>
     );
